@@ -1,22 +1,21 @@
 pipeline{
 	agent any
-	
 	stages{
-		stage('Build'){
+		stage('build'){
 			steps{
 				echo 'Building..'
 				sh 'make'
 				archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
 				}
 			}
-		stage('Test'){
+		stage('test'){
 			steps{
 				echo 'Testing'
 				sh 'make check || true' 
                 junit '**/target/*.xml'
 				}
 			}
-		stage('Deploy'){
+		stage('deploy'){
 				when{
 					expression {
 						currentBuild.result == null || currentBuild.result == 'SUCCESS' 
