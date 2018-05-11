@@ -13,7 +13,7 @@ pipeline{
 			steps{
 				echo 'Testing'
 				sh 'true' 
-        
+        			sh '$NewChecker=false'
 				}
 			}
 		stage('deploy'){
@@ -24,6 +24,9 @@ pipeline{
 				}
 			   steps{
 					echo 'Deploying'
+				   	echo '$NewChecker'
+                    			sh '$NewChecker=true'
+                    			echo '$NewChecker'
 					
 				}
 		}
