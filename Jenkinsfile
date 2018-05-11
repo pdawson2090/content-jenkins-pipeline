@@ -4,7 +4,9 @@ pipeline{
 		stage('build'){
 			steps{
 				echo 'Building..'
-				sh 'make'
+				sh 'javac -d . src/*.java'
+-				sh 'echo Main-Class: Rectangulator > MANIFEST.MF'
+-				sh 'jar -cvmf MANIFEST.MF rectangle.jar *.class'
 				archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
 				}
 			}
