@@ -12,8 +12,9 @@ pipeline{
 		stage('test'){
 			steps{
 				echo 'Testing'
-				sh 'true' 
-        			sh '$NewChecker=false'
+				dog = ${dog}
+			
+			 
 				}
 			}
 		stage('deploy'){
@@ -24,9 +25,11 @@ pipeline{
 				}
 			   steps{
 					echo 'Deploying'
-				   	echo '$NewChecker'
-                    			sh '$NewChecker=true'
-                    			echo '$NewChecker'
+				   	echo 'dog'
+				   	echo '$dog'
+				   	echo '${dog}'
+				        echo ${dog}
+				   
 					
 				}
 		}
